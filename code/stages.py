@@ -182,7 +182,7 @@ PACKAGES = {
     # --- Second package  ---
     # kept tunnel for validity of the code below
     "tunnel": {
-        "name": "Stage 2 - Acces in non-motorized transport and public transport",
+        "name": "Package 2: PT and cycling access",
         # Railway improvements: the same section and service OD scope as above.
         "railway_expansions": [
             {
@@ -294,7 +294,7 @@ COMBINED_EFFECTS = {
 # INTERNAL ASSEMBLY AND APPRAISAL HELPERS (normally leave unchanged)
 # =============================================================================
 STATE_IDS = (0, 1, 2, 3)
-STATE_LABELS = {0: "Baseline", 1: "Stations only", 2: "Tunnel only", 3: "Stations + tunnel"}
+STATE_LABELS = {0: "Baseline", 1: "Package 1 only", 2: "Package 2 only", 3: "Package 1 + Package 2"}
 STATE_COLORS = {0: "#9E9E9E", 1: "#FFC107", 2: "#2196F3", 3: "#4CAF50"}
 _STATE_COMPONENTS = {0: (False, False), 1: (True, False), 2: (False, True), 3: (True, True)}
 
@@ -497,7 +497,7 @@ def _assemble_stages(packages: dict, params: dict, service_od_pairs: list[dict],
         }
         stages[stage] = specification
     combined = deepcopy(stages[2])
-    combined["name"] = "Both stages - Tunnel and Hubs"
+    combined["name"] = "Package 1 + Package 2"
     combined["section_time_saving_min"] = minute_effect(3, "section_time_saving_min")
     for key in ("railway_expansions", "mobility_hubs", "bike_highways", "road_capacity"):
         if key in stages[1] or key in stages[2] or key in combined_effects:
